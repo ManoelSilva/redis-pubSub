@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: header"></div>
-	<div class="col-md-12">
+	<div class="col-md-12 pd-top-100">
 		<div class="panel panel-default panel-table">
 			<div class="panel-heading">
 				<div class="row">
@@ -14,8 +14,8 @@
 						<h3 class="panel-title">Redis Message Queue RPUSH - RPOP</h3>
 					</div>
 					<div class="col col-xs-6 text-right">
-						<button type="button" class="btn btn-sm btn-primary btn-create">Check
-							Messages</button>
+						<button type="button" class="btn btn-sm btn-primary btn-create"
+							onClick="window.location.reload();">Check Messages</button>
 					</div>
 				</div>
 			</div>
@@ -28,9 +28,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>ID</td>
-							<td>MESSAGE</td>
+						<th:block th:each="message : ${messages}">
+							<tr>
+								<td class="text-center" th:text="${message.id}">...</td>
+								<td th:text="${message.value}">...</td>
+							</tr>
+						</th:block>
+						<tr th:if="${#lists.isEmpty(messages)}">
+							<td colspan="2">No messages here..</td>
 						</tr>
 					</tbody>
 				</table>

@@ -4,10 +4,10 @@ import java.util.Timer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.stereotype.Component;
 
-@Component
+@Configuration
 public class ListenerTaskConfig implements ApplicationListener<ContextRefreshedEvent> {
 	private final SubscriberTask subscriberTask;
 	private Timer deamon;
